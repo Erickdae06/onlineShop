@@ -1,0 +1,15 @@
+
+
+.jb-bg{
+    background-image: url(assets/bg.jpeg);
+    background-size: cover;
+    background-position: center center;
+}
+.artikel a{
+    text-decoration: none;
+    color: white !important;
+}
+.artikel a:hover{
+    text-decoration: none;
+    color: deepskyblue !important;
+}
