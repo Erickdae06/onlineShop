@@ -109,7 +109,7 @@
                         <h5 class="card-title">Nama Produk 1</h5>
                         <h5>Rp.200,000</h5>
                         <p class="card-text">Deskripsi singkat produk.</p>
-                        <a href="#" class="btn btn-success" onclick="openWhatsApp('Nama Produk 1', 'Rp 200,000')">Pesan Via Whatsapp</a>
+                        <a href="#" class="btn btn-success" onclick="openWhatsApp()">Pesan Via Whatsapp</a>
 
                       </div>
                     </div>
@@ -276,22 +276,23 @@
 
     <!-- script api whatsapp -->
     <script>
-        function openWhatsApp(productName, productPrice) {
-          var phoneNumber = "082141353483"; // Replace with your phone number
-      
-          // Encode the product name and price for use in the URL
-          var encodedProductName = encodeURIComponent(productName);
-          var encodedProductPrice = encodeURIComponent(productPrice);
-      
-          // Create the WhatsApp URL with the phone number and the default message including the product name and price
-          var message = "Halo, saya tertarik dengan produk " + encodedProductName + " yang dijual dengan harga " + encodedProductPrice + ".";
-          var encodedMessage = encodeURIComponent(message);
-          var url = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
-      
-          // Open the URL in a new window or tab
-          window.open(url, "_blank");
+        function openWhatsApp() {
+          var namaProduk = document.querySelector(".card-title").innerText;
+          var hargaProduk = document.querySelector("h5:nth-of-type(2)").innerText;
+          var deskripsiProduk = document.querySelector(".card-text").innerText;
+          
+          var pesan = "Saya tertarik untuk membeli produk:\n" +
+                      "Nama Produk: " + namaProduk + "\n" +
+                      "Harga: " + hargaProduk + "\n" +
+                      "Deskripsi: " + deskripsiProduk + "\n" +
+                      "Silakan beri informasi lebih lanjut.";
+          
+          var encodedMessage = encodeURIComponent(pesan);
+          var whatsappURL = "https://api.whatsapp.com/send?text=" + encodedMessage;
+          
+          window.open(whatsappURL);
         }
-      </script>
+    </script>
       
       
 </body>
